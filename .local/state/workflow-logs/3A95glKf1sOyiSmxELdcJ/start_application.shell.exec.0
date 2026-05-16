@@ -1,0 +1,139 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K5:07:52 PM [express] serving on port 5000
+
+A PostCSS plugin did not pass the `from` option to `postcss.parse`. This may cause imported assets to be incorrectly transformed. If you've recently added a PostCSS plugin that raised this warning, please contact the package author to fix the issue.
+5:07:54 PM [express] GET /api/auth/user 304 in 3ms :: {"id":"local-user","firstName":"Store","lastName":"Owner","email":null}
+5:07:55 PM [express] GET /api/dashboard/stats 304 in 14ms :: {"totalProducts":0,"lowStockCount":0,"todaySales":0,"inventoryValue":0}
+5:07:55 PM [express] GET /api/products/low-stock 304 in 18ms :: []
+5:07:55 PM [express] GET /api/sales/recent 304 in 19ms :: []
+5:08:17 PM [express] GET /api/auth/user 304 in 1ms :: {"id":"local-user","firstName":"Store","lastName":"Owner","email":null}
+5:08:17 PM [express] GET /api/products/low-stock 304 in 13ms :: []
+5:08:17 PM [express] GET /api/sales/recent 304 in 16ms :: []
+5:08:17 PM [express] GET /api/dashboard/stats 304 in 15ms :: {"totalProducts":0,"lowStockCount":0,"todaySales":0,"inventoryValue":0}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m5:09:16 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/AppSidebar.tsx, /src/index.css?v=S6T0do62VY0WI80rjVIoc[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m5:09:18 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/AppSidebar.tsx, /src/index.css?v=S6T0do62VY0WI80rjVIoc[22m [33m(x2)[39m
+5:10:04 PM [express] GET /api/auth/user 200 in 1ms :: {"id":"local-user","firstName":"Store","lastName":"Owner","email":null}
+5:10:04 PM [express] GET /api/sales/recent 200 in 10ms :: []
+5:10:04 PM [express] GET /api/dashboard/stats 200 in 14ms :: {"totalProducts":0,"lowStockCount":0,"todaySales":0,"inventoryValue":0}
+5:10:04 PM [express] GET /api/products/low-stock 200 in 11ms :: []
+5:16:29 PM [express] GET /api/logout 200 in 8ms
+5:17:01 PM [express] GET /api/auth/user 304 in 0ms :: {"id":"local-user","firstName":"Store","lastName":"Owner","email":null}
+5:21:55 PM [express] GET /api/logout 200 in 5ms
+5:21:57 PM [express] GET /api/dashboard/stats 304 in 12ms :: {"totalProducts":0,"lowStockCount":0,"todaySales":0,"inventoryValue":0}
+5:21:57 PM [express] GET /api/products/low-stock 304 in 1ms :: []
+5:22:01 PM [express] GET /api/sales/recent 304 in 2ms :: []
+5:29:42 PM [express] GET /api/auth/user 304 in 1ms :: {"id":"local-user","firstName":"Store","lastName":"Owner","email":null}
+5:29:42 PM [express] GET /api/dashboard/stats 304 in 13ms :: {"totalProducts":0,"lowStockCount":0,"todaySales":0,"inventoryValue":0}
+5:29:42 PM [express] GET /api/products/low-stock 304 in 12ms :: []
+5:29:43 PM [express] GET /api/sales/recent 304 in 11ms :: []
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m5:30:58 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/AppSidebar.tsx, /src/index.css?v=S6T0do62VY0WI80rjVIoc[22m [33m(x3)[39m
+5:31:16 PM [express] GET /api/auth/user 304 in 0ms :: {"id":"local-user","firstName":"Store","lastName":"Owner","email":null}
+5:31:16 PM [express] GET /api/dashboard/stats 304 in 12ms :: {"totalProducts":0,"lowStockCount":0,"todaySales":0,"inventoryValue":0}
+5:31:17 PM [express] GET /api/products/low-stock 304 in 2ms :: []
+5:31:17 PM [express] GET /api/sales/recent 304 in 2ms :: []

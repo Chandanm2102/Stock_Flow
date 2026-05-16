@@ -1,0 +1,44 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K5:43:20 PM [express] serving on port 5000
+
+A PostCSS plugin did not pass the `from` option to `postcss.parse`. This may cause imported assets to be incorrectly transformed. If you've recently added a PostCSS plugin that raised this warning, please contact the package author to fix the issue.
+5:43:28 PM [express] GET /api/auth/user 304 in 2ms :: {"id":"local-user","firstName":"Store","lastName":"Owner","email":null}
+5:43:28 PM [express] GET /api/sales/recent 304 in 7ms :: []
+5:43:28 PM [express] GET /api/dashboard/stats 304 in 6ms :: {"totalProducts":0,"lowStockCount":0,"todaySales":0,"inventoryValue":0}
+5:43:28 PM [express] GET /api/products 304 in 16ms :: []
+5:43:41 PM [express] GET /api/categories 304 in 13ms :: []
+5:43:45 PM [express] GET /api/products/low-stock 304 in 4ms :: []
+Error fetching sales report: error: column "sales.sale_date" must appear in the GROUP BY clause or be used in an aggregate function
+    at [90m/home/runner/workspace/[39mnode_modules/[4mpg-pool[24m/index.js:45:11
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at async <anonymous> [90m(/home/runner/workspace/[39mnode_modules/[4msrc[24m/node-postgres/session.ts:104:19[90m)[39m
+    at async DatabaseStorage.getSalesReport [90m(/home/runner/workspace/[39mserver/storage.ts:360:20[90m)[39m
+    at async <anonymous> [90m(/home/runner/workspace/[39mserver/routes.ts:212:22[90m)[39m {
+  length: [33m178[39m,
+  severity: [32m'ERROR'[39m,
+  code: [32m'42803'[39m,
+  detail: [90mundefined[39m,
+  hint: [90mundefined[39m,
+  position: [32m'16'[39m,
+  internalPosition: [90mundefined[39m,
+  internalQuery: [90mundefined[39m,
+  where: [90mundefined[39m,
+  schema: [90mundefined[39m,
+  table: [90mundefined[39m,
+  column: [90mundefined[39m,
+  dataType: [90mundefined[39m,
+  constraint: [90mundefined[39m,
+  file: [32m'parse_agg.c'[39m,
+  line: [32m'1442'[39m,
+  routine: [32m'check_ungrouped_columns_walker'[39m
+}
+5:43:46 PM [express] GET /api/reports/sales 500 in 12ms :: {"message":"Failed to fetch sales report"}
+5:43:46 PM [express] GET /api/reports/stock-summary 304 in 14ms :: {"totalItems":0,"totalValue":0,"inStock":0,"lowStock":0,"outOfStock":0}
+5:43:46 PM [express] GET /api/reports/profit-analysis 304 in 3ms :: {"totalRevenue":0,"totalCost":0,"grossProfit":0,"grossMarginPercentage":0,"categoryBreakdown":[]}
+5:43:46 PM [express] GET /api/reports/sales-trends 304 in 6ms :: {"currentPeriodRevenue":0,"previousPeriodRevenue":0,"revenueChange":0,"revenueChangePercentage":0,"currentPeriodSales":0,"previousPeriodSales":0,"salesChange":0,"salesChangePercentage":0}
+5:43:46 PM [express] GET /api/reports/best-selling 304 in 14ms :: []
+5:43:52 PM [express] GET /api/suppliers 304 in 3ms :: []
+5:43:53 PM [express] GET /api/purchase-orders 304 in 3ms :: []

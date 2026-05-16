@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>InvTrack - Digital Inventory Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary size-10 rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<div>
+<h1 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-none">InvTrack</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Inventory Management</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-medium" href="#">
+<span class="material-symbols-outlined text-[22px]">dashboard</span>
+<span class="text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">package_2</span>
+<span class="text-sm">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">shopping_cart</span>
+<span class="text-sm">Sales Orders</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">bar_chart</span>
+<span class="text-sm">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">group</span>
+<span class="text-sm">Suppliers</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">settings</span>
+<span class="text-sm">Settings</span>
+</a>
+<div class="mt-4 flex items-center gap-3 px-3 py-2 bg-slate-100 dark:bg-slate-800 rounded-xl">
+<div class="size-8 rounded-full bg-slate-300 overflow-hidden" data-alt="User avatar profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB4YZ9ClxSRd3lf4hLqvKDedPvgnKUiqZH4mzDD7FKkl4Fs0xfpZ0NE4LQHq7ZWZ--gBDba9AO2blQnamfLD1H9rVmT73BxAufDSjwggBdQLOUA4X_BQB85XPVNhfksaqaXkAaxFSFYoYjSs4YqTb7RYpVPU62tCVDlw5Vr3mdjLcjapl0Yx95tlMukWo0whCtNYb7l-eGpqkq8qbbTlfxWMiTNCJTaXlnSRNdY_BIDWTR3YoCG-ovEd7S2gZdHotyk3q30LH8iWDE')"></div>
+<div class="overflow-hidden">
+<p class="text-xs font-semibold truncate">Alex Johnson</p>
+<p class="text-[10px] text-slate-500 truncate">Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-y-auto">
+<!-- Top Navigation Bar -->
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 sticky top-0 z-10">
+<div class="flex items-center gap-4 w-1/3">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/50 text-slate-900 dark:text-slate-100 placeholder-slate-500" placeholder="Search products, orders, or SKU..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="size-10 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+<div class="h-6 w-px bg-slate-200 dark:border-slate-700 mx-2"></div>
+<button class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90">
+<span class="material-symbols-outlined text-sm">add</span>
+                        New Product
+                    </button>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-8 space-y-8">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">System Overview</h2>
+<p class="text-slate-500 dark:text-slate-400">Track your warehouse efficiency and sales performance</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-sm font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+                            Today
+                        </button>
+<button class="px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-sm font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+                            Export
+                        </button>
+</div>
+</div>
+<!-- Metrics Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="size-10 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined">inventory</span>
+</div>
+<span class="text-emerald-500 text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded">+2.4%</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Products</p>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-1">1,284</h3>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="size-10 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<span class="text-emerald-500 text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded">+12.1%</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Sales Today</p>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-1">$4,250</h3>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="size-10 bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined">priority_high</span>
+</div>
+<span class="text-rose-500 text-xs font-bold bg-rose-50 dark:bg-rose-900/20 px-2 py-1 rounded">-5.2%</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Low Stock Items</p>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-1">12</h3>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="size-10 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<span class="text-emerald-500 text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded">+8.5%</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Recent Sales</p>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-1">48</h3>
+</div>
+</div>
+<!-- Charts Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h4 class="text-lg font-bold text-slate-900 dark:text-slate-100">Sales Trends</h4>
+<p class="text-sm text-slate-500">Revenue performance over the last 7 days</p>
+</div>
+<div class="text-right">
+<span class="text-2xl font-bold text-primary">$28,450</span>
+<p class="text-emerald-500 text-xs font-bold">+15.3% vs last week</p>
+</div>
+</div>
+<div class="h-64 w-full relative">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 478 150">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#137fec" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#137fec" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0 109C18.15 109 18.15 21 36.3 21C54.46 21 54.46 41 72.61 41C90.77 41 90.77 93 108.92 93C127.07 93 127.07 33 145.23 33C163.38 33 163.38 101 181.53 101C199.69 101 199.69 61 217.84 61C236 61 236 45 254.15 45C272.3 45 272.3 121 290.46 121C308.61 121 308.61 149 326.76 149C344.92 149 344.92 1 363.07 1C381.23 1 381.23 81 399.38 81C417.53 81 417.53 129 435.69 129C453.84 129 453.84 25 472 25V150H0V109Z" fill="url(#chartGradient)"></path>
+<path d="M0 109C18.15 109 18.15 21 36.3 21C54.46 21 54.46 41 72.61 41C90.77 41 90.77 93 108.92 93C127.07 93 127.07 33 145.23 33C163.38 33 163.38 101 181.53 101C199.69 101 199.69 61 217.84 61C236 61 236 45 254.15 45C272.3 45 272.3 121 290.46 121C308.61 121 308.61 149 326.76 149C344.92 149 344.92 1 363.07 1C381.23 1 381.23 81 399.38 81C417.53 81 417.53 129 435.69 129C453.84 129 453.84 25 472 25" fill="none" stroke="#137fec" stroke-width="2"></path>
+</svg>
+<div class="flex justify-between mt-4">
+<span class="text-[11px] font-bold text-slate-400">MON</span>
+<span class="text-[11px] font-bold text-slate-400">TUE</span>
+<span class="text-[11px] font-bold text-slate-400">WED</span>
+<span class="text-[11px] font-bold text-slate-400">THU</span>
+<span class="text-[11px] font-bold text-slate-400">FRI</span>
+<span class="text-[11px] font-bold text-slate-400">SAT</span>
+<span class="text-[11px] font-bold text-slate-400">SUN</span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-6">Recent Activities</h4>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="size-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 shrink-0">
+<span class="material-symbols-outlined text-lg">local_shipping</span>
+</div>
+<div>
+<p class="text-sm font-medium">New shipment received</p>
+<p class="text-xs text-slate-500">Order #8821 from Global Mart</p>
+<p class="text-[10px] text-slate-400 mt-1">2 mins ago</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="size-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 shrink-0">
+<span class="material-symbols-outlined text-lg">shopping_basket</span>
+</div>
+<div>
+<p class="text-sm font-medium">Bulk order placed</p>
+<p class="text-xs text-slate-500">24 units of Wireless Headphones</p>
+<p class="text-[10px] text-slate-400 mt-1">45 mins ago</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="size-8 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center text-amber-600 shrink-0">
+<span class="material-symbols-outlined text-lg">warning</span>
+</div>
+<div>
+<p class="text-sm font-medium">Stock alert</p>
+<p class="text-xs text-slate-500">Smart Watch Series 4 is low</p>
+<p class="text-[10px] text-slate-400 mt-1">3 hours ago</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="size-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 shrink-0">
+<span class="material-symbols-outlined text-lg">edit_note</span>
+</div>
+<div>
+<p class="text-sm font-medium">Inventory Audit</p>
+<p class="text-xs text-slate-500">Completed by Sarah Wilson</p>
+<p class="text-[10px] text-slate-400 mt-1">5 hours ago</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 py-2 text-primary text-sm font-semibold hover:bg-primary/5 rounded-lg transition-colors">
+                            View All Activity
+                        </button>
+</div>
+</div>
+<!-- Table Section -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<h4 class="text-lg font-bold">Top Performing Products</h4>
+<button class="text-primary text-sm font-semibold flex items-center gap-1">
+                            Full Inventory
+                            <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider">
+<tr>
+<th class="px-6 py-4">Product Name</th>
+<th class="px-6 py-4">SKU</th>
+<th class="px-6 py-4">Stock Status</th>
+<th class="px-6 py-4">Price</th>
+<th class="px-6 py-4 text-right">Revenue</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-slate-100 dark:bg-slate-800" data-alt="Product image placeholder" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD8dU5TOAL_e3j5z1sCCmPUyDGDi8MqIgFMEspaDcPSgqGvnj1BKrBF3FA6ncAykrgqG4xAeAZ3aXZVtW21J4ekIEvvaMCV6GUmkM10e17cGV6QrlBa_8j0l-z0gIs8DknVi_v0IZHKrsafnyod8Dfr4obusAVEsyjHG7fwnn0YR0Ful_3lv0OvkI1-uy1zdV5Yd0TJpja6DJfo4ddOV9Kp0zmzRp_lBh-0wpf8kI3_v3c-9p2JYGY51a4jH9r7qX_Yuo9-fTiph0Q')"></div>
+<span class="text-sm font-medium">UltraThin Laptop Pro</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">LT-09942</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-1 rounded text-[10px] font-bold bg-emerald-50 text-emerald-600 dark:bg-emerald-900/20 dark:text-emerald-400">IN STOCK</span>
+</td>
+<td class="px-6 py-4 text-sm font-medium">$1,299.00</td>
+<td class="px-6 py-4 text-sm font-bold text-right">$45,465.00</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-slate-100 dark:bg-slate-800" data-alt="Product image placeholder" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCUCpuGY3hUI2zaB9jLW7FOdRVq5H0lPgZfw_v1WJ6ETrUKGEo2AsYiLIlNmvyZtr920uQhvoGumMs5yyW-jwB7B_QJfdhj-8apeKbL19Fv0BCxF46WYUGRAOd6W-q2VZ0Q3Rk8x4c3gfiungRMVDOZ7Ko1ZmQqNxm_lmlTdZ4nG1TsTHQMN2ZrAzlhBg8Ry5IYJyjDFW0PBtHurx5He01qCCJYQqm6M4JicWhLeGQo7nrLDIZaQjX_R1_lLyylhGT76ZFSd5kwbcs')"></div>
+<span class="text-sm font-medium">Noise-Cancel Headphones</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">HP-22104</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-1 rounded text-[10px] font-bold bg-amber-50 text-amber-600 dark:bg-amber-900/20 dark:text-amber-400">LOW STOCK</span>
+</td>
+<td class="px-6 py-4 text-sm font-medium">$299.00</td>
+<td class="px-6 py-4 text-sm font-bold text-right">$12,558.00</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-slate-100 dark:bg-slate-800" data-alt="Product image placeholder" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCGh3L6p1vifY0S4nENNkUZSWhXxu6TE71CRexN81eVlTYWrrHzsqLvAXIKDI99YjPPz1WLkQ55ukHET9nh4eFI2D0t3-nfxsp25DWlj8diyuPnyhaXYntQW_6KIE6kM5POecc5P0btNEkQ0Rd_iBkxobOtwqpdw-b4u_PGajn3bSeSz8DV0EEQ1PZwhVQY4OzgPXqjM9eZr6fZCc2Cakq9iUv2hZB9AhMlzQYGNHm9I9xLaHPzSEgyQDuUSjrf-YbNJuTWel_cRFQ')"></div>
+<span class="text-sm font-medium">Smart Fitness Band Z2</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">FB-11582</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-1 rounded text-[10px] font-bold bg-emerald-50 text-emerald-600 dark:bg-emerald-900/20 dark:text-emerald-400">IN STOCK</span>
+</td>
+<td class="px-6 py-4 text-sm font-medium">$89.00</td>
+<td class="px-6 py-4 text-sm font-bold text-right">$8,188.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

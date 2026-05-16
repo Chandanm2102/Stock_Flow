@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Low Stock Alerts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col shrink-0">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3">
+<div class="bg-primary p-1.5 rounded-lg text-white">
+<span class="material-symbols-outlined block">inventory_2</span>
+</div>
+<h1 class="font-bold text-lg tracking-tight">StockFlow</h1>
+</div>
+<nav class="flex-1 p-4 space-y-2 overflow-y-auto">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="font-medium text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">package_2</span>
+<span class="font-medium text-sm">All Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1">warning</span>
+<span class="font-medium text-sm">Low Stock Alerts</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">shopping_cart</span>
+<span class="font-medium text-sm">Purchase Orders</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">local_shipping</span>
+<span class="font-medium text-sm">Suppliers</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">bar_chart</span>
+<span class="font-medium text-sm">Reports</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 p-2">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">JD</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold truncate text-slate-900 dark:text-slate-100">John Doe</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 truncate">Inventory Manager</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 shrink-0">
+<div class="flex-1 flex items-center">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-sm" placeholder="Search products, suppliers..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="flex-1 overflow-y-auto p-8 space-y-6">
+<!-- Header Stats -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Low Stock Alerts</h2>
+<p class="text-slate-500 dark:text-slate-400">You have 12 items currently below their reorder point.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined text-lg">filter_list</span>
+                            Filter
+                        </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary/90">
+<span class="material-symbols-outlined text-lg">sync_alt</span>
+                            Bulk Reorder
+                        </button>
+</div>
+</div>
+<!-- Tabs -->
+<div class="flex border-b border-slate-200 dark:border-slate-800">
+<button class="px-6 py-3 text-sm font-semibold border-b-2 border-primary text-primary">Critical (5)</button>
+<button class="px-6 py-3 text-sm font-semibold border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200">Below Reorder Point (7)</button>
+<button class="px-6 py-3 text-sm font-semibold border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200">Out of Stock (2)</button>
+</div>
+<!-- Product Alerts List -->
+<div class="grid gap-4">
+<!-- Critical Alert Item -->
+<div class="bg-white dark:bg-slate-900 border-l-4 border-red-500 rounded-xl p-5 flex items-center gap-6 shadow-sm">
+<div class="w-16 h-16 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Product photo of a white wireless smartwatch" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxNn37U4Ow7BZ48FAFZIkOl_vRuLDZEHXw1p60xPn4lVZIu6-XCm_MOog_Nn5-EsHhJkYhgk3MA9ebAvfJ-GVXXqGZIIpbwihvm2Y_83B8fpJIg6zNanK-G-gZ0Sgi8t_u8H1tF8I2z7koUL0v-EPiQ42OZQozwbN0F3lPcIEzsrof1Fi_LudTcdumKH-upJ9wxLVi7CmJPAdmSxtUXE_MFpHPSypKp2YzHmtgpa_1lMegWlDECXDBPex6np-a3XAaV9_C8lKlDwk"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-[10px] uppercase font-bold px-2 py-0.5 rounded-full">Critical</span>
+<h3 class="text-base font-bold text-slate-900 dark:text-slate-100 truncate">Premium Smart Watch Series X</h3>
+</div>
+<div class="grid grid-cols-3 gap-4">
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400">Supplier</p>
+<p class="text-sm font-medium">TechGizmo Logistics</p>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400">In Stock</p>
+<p class="text-sm font-bold text-red-600">3 units</p>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400">Reorder Point</p>
+<p class="text-sm font-medium">15 units</p>
+</div>
+</div>
+</div>
+<div class="shrink-0 flex gap-2">
+<button class="px-4 py-2 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary/90 flex items-center gap-2 transition-all active:scale-95">
+<span class="material-symbols-outlined text-lg">shopping_basket</span>
+                                Reorder
+                            </button>
+</div>
+</div>
+<!-- Warning Alert Item -->
+<div class="bg-white dark:bg-slate-900 border-l-4 border-amber-500 rounded-xl p-5 flex items-center gap-6 shadow-sm">
+<div class="w-16 h-16 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Studio shot of high-end black noise-canceling headphones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk3vXf-MHnHe7FxQhaVAr_lfCbtmq6yqtax5VI51VHURYDGADWT_l4puj8P64vJYEtxPhxJP9AWS-sQClinmMY8bUNwlHAupzP18QYzGnN2fyU973maxpVv8ezqEqVV-zUjEUC55ROLFUB5INper3fB30S77eFxD8ZdMt89Q3lsE2gLPYW839IE40ekvOfepkvWtxxIEW7igZNJgwISX7SHXoGk0vaNUHyHw81VusJg9PvjL-q0FycAWoXQphp2wmaoE84FnbxhE8"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-[10px] uppercase font-bold px-2 py-0.5 rounded-full">Low Stock</span>
+<h3 class="text-base font-bold text-slate-900 dark:text-slate-100 truncate">Pro Studio Headphones</h3>
+</div>
+<div class="grid grid-cols-3 gap-4">
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400">Supplier</p>
+<p class="text-sm font-medium">AudioGlobal Distributors</p>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400">In Stock</p>
+<p class="text-sm font-bold text-amber-600">8 units</p>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400">Reorder Point</p>
+<p class="text-sm font-medium">10 units</p>
+</div>
+</div>
+</div>
+<div class="shrink-0 flex gap-2">
+<button class="px-4 py-2 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary/90 flex items-center gap-2 transition-all active:scale-95">
+<span class="material-symbols-outlined text-lg">shopping_basket</span>
+                                Reorder
+                            </button>
+</div>
+</div>
+<!-- Out of Stock Alert Item -->
+<div class="bg-white dark:bg-slate-900 border-l-4 border-slate-400 rounded-xl p-5 flex items-center gap-6 shadow-sm opacity-90">
+<div class="w-16 h-16 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close up shot of a red athletic running shoe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8xG7vLJGJzrE8zIjpYd5PMewx0hBeegbtwYdRrpPxQ-dlp1XrPciFqBIQj7oL7vnnsPi499TbBTuUoM2CLhUOQprGBeHywYO8eSf0czXIYPTM69NiY9R1nd044Ql1SarL6QNZkCT4sdQoXo3I5XoaGZU9kdvRC6AM8J07XJTi2f7d_jCkBCxouD2xinCgHrchifw1hheWOcWUUpXjIDWtZ1VSNZ_O5mvy8gkSjkmRS382CRJi27xxI0NKqeESL_CHEAquxi87AcQ"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-[10px] uppercase font-bold px-2 py-0.5 rounded-full">Out of Stock</span>
+<h3 class="text-base font-bold text-slate-900 dark:text-slate-100 truncate">Vapor Run Athletic Shoes</h3>
+</div>
+<div class="grid grid-cols-3 gap-4">
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400">Supplier</p>
+<p class="text-sm font-medium">SpeedWay Manufacturing</p>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400">In Stock</p>
+<p class="text-sm font-bold text-slate-500">0 units</p>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400">Reorder Point</p>
+<p class="text-sm font-medium">20 units</p>
+</div>
+</div>
+</div>
+<div class="shrink-0 flex gap-2">
+<button class="px-4 py-2 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary/90 flex items-center gap-2 transition-all active:scale-95">
+<span class="material-symbols-outlined text-lg">shopping_basket</span>
+                                Reorder
+                            </button>
+</div>
+</div>
+<!-- Low Stock Alert Item -->
+<div class="bg-white dark:bg-slate-900 border-l-4 border-amber-500 rounded-xl p-5 flex items-center gap-6 shadow-sm">
+<div class="w-16 h-16 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Classic vintage film camera on a solid background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzmBYdQDZbJ8ksoAE8yvPWfkuyusem7zUxXDLduFlKaDTfcZ1nAFN_6Df11gtQGoTYlrIxO9hYpTiHjI24P9ID3D96U1V6U4YCqS24aXwUi9WhjQr_HskKg8Za7x83iz_Sq865fVdvNb1s83WW_IkWFiNtp79wnnKbE9hihX_Dyd4UinTof2crXdPlVV4G6fDkeI4mhvbqE39_urRJ2P1nlgqDYt8kSbsLRmCudVSyihrlsNXjb3LLyZ4f_DD-pCxZP8inPYhqXBM"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-[10px] uppercase font-bold px-2 py-0.5 rounded-full">Low Stock</span>
+<h3 class="text-base font-bold text-slate-900 dark:text-slate-100 truncate">Vintage 35mm Film Camera</h3>
+</div>
+<div class="grid grid-cols-3 gap-4">
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400">Supplier</p>
+<p class="text-sm font-medium">Retro Optics Co.</p>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400">In Stock</p>
+<p class="text-sm font-bold text-amber-600">4 units</p>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400">Reorder Point</p>
+<p class="text-sm font-medium">5 units</p>
+</div>
+</div>
+</div>
+<div class="shrink-0 flex gap-2">
+<button class="px-4 py-2 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary/90 flex items-center gap-2 transition-all active:scale-95">
+<span class="material-symbols-outlined text-lg">shopping_basket</span>
+                                Reorder
+                            </button>
+</div>
+</div>
+</div>
+<!-- Pagination/Load More -->
+<div class="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-slate-800">
+<p class="text-sm text-slate-500 dark:text-slate-400">Showing 4 of 12 items requiring attention</p>
+<div class="flex gap-2">
+<button class="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">Previous</button>
+<button class="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">Next</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

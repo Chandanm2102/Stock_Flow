@@ -1,0 +1,152 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K5:35:32 PM [express] serving on port 5000
+
+A PostCSS plugin did not pass the `from` option to `postcss.parse`. This may cause imported assets to be incorrectly transformed. If you've recently added a PostCSS plugin that raised this warning, please contact the package author to fix the issue.
+5:36:13 PM [express] GET /api/auth/user 304 in 2ms :: {"id":"local-user","firstName":"Store","lastName":"Owner","email":null}
+5:36:13 PM [express] GET /api/sales/recent 304 in 16ms :: []
+5:36:13 PM [express] GET /api/products/low-stock 304 in 14ms :: []
+5:36:13 PM [express] GET /api/dashboard/stats 304 in 24ms :: {"totalProducts":0,"lowStockCount":0,"todaySales":0,"inventoryValue":0}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m5:36:36 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/index.css?v=xdL-cQwGOhoann8Wu5Zxp[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m5:36:47 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/index.css?v=xdL-cQwGOhoann8Wu5Zxp[22m [33m(x2)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m5:37:06 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/AppSidebar.tsx, /src/index.css?v=xdL-cQwGOhoann8Wu5Zxp[22m
+5:37:07 PM [express] GET /api/auth/user 304 in 1ms :: {"id":"local-user","firstName":"Store","lastName":"Owner","email":null}
+5:37:07 PM [express] GET /api/sales/recent 304 in 13ms :: []
+5:37:07 PM [express] GET /api/products/low-stock 304 in 16ms :: []
+5:37:07 PM [express] GET /api/dashboard/stats 304 in 23ms :: {"totalProducts":0,"lowStockCount":0,"todaySales":0,"inventoryValue":0}
+5:37:10 PM [express] GET /api/categories 200 in 2ms :: []
+5:37:10 PM [express] GET /api/products 200 in 2ms :: []
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m5:37:20 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx?v=xdL-cQwGOhoann8Wu5Zxp, /src/index.css?v=xdL-cQwGOhoann8Wu5Zxp[22m
+5:37:49 PM [express] GET /api/reports/sales-trends/weekly 200 in 10ms
+5:37:49 PM [express] GET /api/reports/sales/daily 200 in 10ms
+5:37:49 PM [express] GET /api/reports/stock-summary 200 in 21ms :: {"totalItems":0,"totalValue":0,"inStock":0,"lowStock":0,"outOfStock":0}
+5:37:49 PM [express] GET /api/reports/best-selling 200 in 4ms :: []
+5:37:49 PM [express] GET /api/reports/profit-analysis 200 in 3ms :: {"totalRevenue":0,"totalCost":0,"grossProfit":0,"grossMarginPercentage":0,"categoryBreakdown":[]}
+5:37:49 PM [express] GET /api/suppliers 200 in 4ms :: []
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m5:38:04 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Dashboard.tsx, /src/index.css?v=xdL-cQwGOhoann8Wu5Zxp[22m

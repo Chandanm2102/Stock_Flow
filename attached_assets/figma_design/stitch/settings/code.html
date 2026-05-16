@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#137fec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+            },
+            fontFamily: {
+              "display": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<title>App Settings</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Navigation Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-4 md:px-10">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">settings</span>
+</div>
+<div>
+<h1 class="text-xl font-bold leading-tight tracking-tight">App Settings</h1>
+<p class="text-sm text-slate-500 dark:text-slate-400">Manage your store's global configuration</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden">
+<div class="w-full h-full bg-gradient-to-br from-primary to-blue-600" data-alt="Abstract colorful user avatar gradient profile"></div>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center py-8 px-4">
+<div class="w-full max-w-[800px] space-y-8">
+<!-- General Configuration Section -->
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<div class="px-6 py-5 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/50">
+<h2 class="text-lg font-bold">General Configuration</h2>
+<p class="text-sm text-slate-500">Configure core financial and inventory parameters</p>
+</div>
+<div class="p-6 space-y-6">
+<!-- Currency Selection -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+<label class="flex flex-col gap-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Default Currency</span>
+<div class="relative">
+<select class="form-select w-full rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 h-12 focus:ring-primary focus:border-primary">
+<option value="USD">USD - United States Dollar</option>
+<option value="EUR">EUR - Euro</option>
+<option value="GBP">GBP - British Pound</option>
+<option value="JPY">JPY - Japanese Yen</option>
+<option value="CAD">CAD - Canadian Dollar</option>
+</select>
+</div>
+<p class="text-xs text-slate-500">All prices will be displayed in this currency.</p>
+</label>
+<!-- Tax Percentage -->
+<label class="flex flex-col gap-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Standard Tax Rate (%)</span>
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400 text-lg">percent</span>
+<input class="form-input w-full pl-10 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 h-12 focus:ring-primary focus:border-primary" placeholder="0.00" step="0.01" type="number" value="15.00"/>
+</div>
+<p class="text-xs text-slate-500">Applied automatically to new items.</p>
+</label>
+</div>
+<hr class="border-slate-100 dark:border-slate-800"/>
+<!-- Low-Stock Threshold -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+<label class="flex flex-col gap-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Low-Stock Threshold</span>
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400 text-lg">inventory_2</span>
+<input class="form-input w-full pl-10 rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 h-12 focus:ring-primary focus:border-primary" placeholder="5" type="number" value="10"/>
+</div>
+<p class="text-xs text-slate-500">Minimum units before alert triggers.</p>
+</label>
+</div>
+</div>
+</section>
+<!-- Notification Preferences Section -->
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<div class="px-6 py-5 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/50">
+<h2 class="text-lg font-bold">Notification Preferences</h2>
+<p class="text-sm text-slate-500">Choose how and when you want to be notified</p>
+</div>
+<div class="p-6">
+<div class="space-y-4">
+<!-- Email Notifications -->
+<div class="flex items-center justify-between p-4 rounded-lg bg-slate-50 dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div>
+<p class="font-medium">Email Notifications</p>
+<p class="text-xs text-slate-500">Receive alerts via your registered email address</p>
+</div>
+</div>
+<label class="inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="relative w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- In-App Notifications -->
+<div class="flex items-center justify-between p-4 rounded-lg bg-slate-50 dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined">notifications_active</span>
+</div>
+<div>
+<p class="font-medium">In-App Alerts</p>
+<p class="text-xs text-slate-500">Real-time alerts while using the dashboard</p>
+</div>
+</div>
+<label class="inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="relative w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Form Actions -->
+<div class="flex items-center justify-end gap-4 pb-12">
+<button class="px-6 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                            Discard Changes
+                        </button>
+<button class="px-8 py-2.5 rounded-lg bg-primary text-white font-semibold shadow-lg shadow-primary/25 hover:opacity-90 transition-opacity">
+                            Save Settings
+                        </button>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>
